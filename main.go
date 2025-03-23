@@ -3,13 +3,16 @@ package main
 import (
 	"github.com/jmoiron/sqlx"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
+	users_api "github.com/spargapees/users-api/config"
+	"github.com/spargapees/users-api/handler"
+	repository "github.com/spargapees/users-api/repository"
+	"github.com/spargapees/users-api/server"
+	service "github.com/spargapees/users-api/service"
 	"os"
 	"os/signal"
 	"syscall"
-	"users-api/handler"
-	repository "users-api/repository"
-	service "users-api/service"
 )
 
 //TIP To run your code, right-click the code and select <b>Run</b>. Alternatively, click
@@ -26,7 +29,7 @@ func main() {
 		logger.Info("Loaded .env file successfully")
 	}
 
-	cfg, err := NewConfig()
+	cfg, err := users_api.NewConfig()
 	if err != nil {
 		logger.WithError(err).Fatal("Failed to load configuration")
 	}
@@ -53,7 +56,7 @@ func main() {
 	service := service.NewService(repository)
 	handler := handler.NewHandler(service)
 
-	srv := new(Server)
+	srv := new(server.Server)
 
 	port := os.Getenv("PORT")
 	if port == "" {

@@ -1,6 +1,6 @@
 package service
 
-import "users-api/repository"
+import "github.com/spargapees/users-api/repository"
 
 type service struct {
 	repository repository.Repository
