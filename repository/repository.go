@@ -19,4 +19,5 @@ func NewRepository(db *sqlx.DB) Repository {
 
 type Repository interface {
 	CreateUser(user dto.User) (int, error)
+	GetAllUsers() ([]dto.User, error)
 }

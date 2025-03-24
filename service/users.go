@@ -17,3 +17,11 @@ func generatePasswordHash(password string) string {
 
 	return fmt.Sprintf("%x", hash.Sum([]byte(salt)))
 }
+
+func (s *service) GetAllUsers() ([]dto.User, error) {
+	users, err := s.repository.GetAllUsers()
+	if err != nil {
+		return nil, err
+	}
+	return users, nil
+}

@@ -19,7 +19,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	users := router.Group("/users")
 	{
 		users.POST("/", h.createUser)
-		//users.GET("/")
+		users.GET("/", h.getAllUsers)
 		//users.PUT("/")
 
 	}

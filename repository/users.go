@@ -14,3 +14,13 @@ func (r *repository) CreateUser(user dto.User) (int, error) {
 	}
 	return id, nil
 }
+
+func (r *repository) GetAllUsers() ([]dto.User, error) {
+	var users []dto.User
+	query := fmt.Sprintf("SELECT id, name, email, password_hash FROM %s", "users")
+	err := r.db.Select(&users, query)
+	if err != nil {
+		return nil, err
+	}
+	return users, nil
+}

@@ -26,6 +26,17 @@ func (h *Handler) createUser(c *gin.Context) {
 	})
 }
 
+func (h *Handler) getAllUsers(c *gin.Context) {
+	users, err := h.services.GetAllUsers()
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+	}
+	response := map[string]interface{}{
+		"all_users": users,
+	}
+	c.JSON(http.StatusOK, response)
+}
+
 type errorResponse struct {
 	Message string `json:"message"`
 }
