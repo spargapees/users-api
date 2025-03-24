@@ -1,7 +1,7 @@
 package dto
 
 type User struct {
-	Id       int    `json:"-" db:"id"`
+	Id       int    `json:"id" db:"id"`
 	Name     string `json:"name" binding:"required"`
 	Surname  string `json:"surname" binding:"required"`
 	Email    string `json:"email" binding:"required"`
@@ -9,6 +9,6 @@ type User struct {
 }
 
 type UserUpdate struct {
-	Name    string `json:"name" binding:"required"`
-	Surname string `json:"surname" binding:"required"`
+	Name    string `json:"name"`
+	Surname string `json:"surname"`
 }
