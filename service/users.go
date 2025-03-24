@@ -25,3 +25,7 @@ func (s *service) GetAllUsers() ([]dto.User, error) {
 	}
 	return users, nil
 }
+
+func (s *service) UpdateUser(userId int, input dto.UserUpdate) error {
+	return s.repository.UpdateUser(userId, input)
+}

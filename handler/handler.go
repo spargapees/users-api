@@ -20,7 +20,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	{
 		users.POST("/", h.createUser)
 		users.GET("/", h.getAllUsers)
-		//users.PUT("/")
+		users.PUT("/:id", h.updateUser)
 
 	}
 

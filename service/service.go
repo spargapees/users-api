@@ -21,4 +21,5 @@ func NewService(repository repository.Repository) Service {
 type Service interface {
 	CreateUser(user dto.User) (int, error)
 	GetAllUsers() ([]dto.User, error)
+	UpdateUser(userId int, input dto.UserUpdate) error
 }
