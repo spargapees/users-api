@@ -18,9 +18,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	users := router.Group("/users")
 	{
-		users.POST("/")
-		users.GET("/")
-		users.PUT("/")
+		users.POST("/", h.createUser)
+		//users.GET("/")
+		//users.PUT("/")
 
 	}
 

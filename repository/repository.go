@@ -2,6 +2,7 @@ package repository
 
 import (
 	"github.com/jmoiron/sqlx"
+	"github.com/spargapees/users-api/dto"
 	"log"
 )
 
@@ -17,4 +18,5 @@ func NewRepository(db *sqlx.DB) Repository {
 }
 
 type Repository interface {
+	CreateUser(user dto.User) (int, error)
 }
